@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+import joblib
 
 ## Load de data
 melbourne_file_path = './input/melbourne-housing-snapshot/melb_data.csv'
@@ -31,3 +32,6 @@ new_pipeline.fit(X_train, y_train)
 y_pred = new_pipeline.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 print("Error cuadrático medio en el conjunto de prueba:", mse)
+
+joblib.dump(new_pipeline, 'model.joblib')
+print("Modelo Guardado")
