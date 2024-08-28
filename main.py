@@ -20,18 +20,31 @@ X = melbourne_data[melbourne_features]
 # Cargar pesos del modelo
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0, test_size=0.25)
 
-regressor_args = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
-new_pipeline = Pipeline([
-    ('scaler', StandardScaler()),  # Paso de preprocesamiento
-    ('regr', RandomForestRegressor(**regressor_args))  # Usar los mejores parámetros
-])
 
-new_pipeline.fit(X_train, y_train)
+print(type(X_test))
 
-# Test
-y_pred = new_pipeline.predict(X_test)
-mse = mean_squared_error(y_test, y_pred)
-print("Error cuadrático medio en el conjunto de prueba:", mse)
+# convert dataframe to dictionary
 
-joblib.dump(new_pipeline, 'model.joblib')
-print("Modelo Guardado")
+X_test_dict = X_test.to_dict(orient='records')
+
+print(X_test_dict[0])
+
+# grid search
+
+
+
+# regressor_args = {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+# new_pipeline = Pipeline([
+#     ('scaler', StandardScaler()),  # Paso de preprocesamiento
+#     ('regr', RandomForestRegressor(**regressor_args))  # Usar los mejores parámetros
+# ])
+
+# new_pipeline.fit(X_train, y_train)
+
+# # Test
+# y_pred = new_pipeline.predict(X_test)
+# mse = mean_squared_error(y_test, y_pred)
+# print("Error cuadrático medio en el conjunto de prueba:", mse)
+
+# joblib.dump(new_pipeline, 'model.joblib')
+# print("Modelo Guardado")
