@@ -26,10 +26,6 @@ def read_root(data:HouseData):
         'Lattitude': [dict_data['Lattitude']],
         'Longtitude': [dict_data['Longtitude']]
     }
-
-    print(df)
-
     df = pd.DataFrame(df)
     value = model.predict(df)
-    print(value)
     return {"predicted":value[0]}
