@@ -1,9 +1,4 @@
 #!/bin/bash
 cd /home/ec2-user/app/
 source environment/bin/activate
-echo "Environment activated"
-which python
-which pip
-pip3 install "fastapi[standard]"
-pip3 list | grep fastapi
-fastapi run ./Server.py
+supervisord -c supervisord.conf
