@@ -42,7 +42,7 @@ jobs:
         run: |
           # Assuming the Deployment Group is already setup
           aws deploy create-deployment \
-            --application-name application-name \
-            --deployment-group-name AppDeploymentGroupName \
+            --application-name MLOPS_APP \
+            --deployment-group-name MLOPS_CODE_DEPLOY_GROUP \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
