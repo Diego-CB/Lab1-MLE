@@ -44,5 +44,4 @@ jobs:
           aws deploy create-deployment \
             --application-name MLOPS_APP \
             --deployment-group-name MLOPS_CODE_DEPLOY_GROUP \
-            --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
