@@ -20,7 +20,6 @@ X = melbourne_data[melbourne_features]
 # Cargar pesos del modelo
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0, test_size=0.25)
 
-
 print(type(X_test))
 
 # convert dataframe to dictionary

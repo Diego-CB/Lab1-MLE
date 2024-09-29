@@ -1,0 +1,1 @@
+docker run --rm -t -p 8000:8000 server
