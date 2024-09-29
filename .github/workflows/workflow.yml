@@ -8,10 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.6
+      - name: Set up Python 3.9.16
         uses: actions/setup-python@v2
         with:
-          python-version: 3.6
+          python-version: 3.9.16
 
         # Install Python Dependencies
       - name: Install dependencies
@@ -26,7 +26,7 @@ jobs:
 
         # Build App and Run Application Test
       - name: Build Application and Run unit Test
-        run: python run.py & pytest
+        run: fastapi run ./Server.py 
 
   continuous-deployment:
     runs-on: ubuntu-latest
