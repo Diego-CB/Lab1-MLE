@@ -1,4 +1,7 @@
 #!/bin/bash
 cd /home/ec2-user/app/
 source environment/bin/activate
+ls /home/ec2-user/app/environment/bin/activate
+echo "Virtual environment activated"
+pip3 list | grep supervisor
 supervisord -c supervisord.conf
