@@ -4,5 +4,6 @@ source environment/bin/activate
 echo "Environment activated"
 which python
 which pip
-pip list | grep fastapi
+pip3 install "fastapi[standard]"
+pip3 list | grep fastapi
 fastapi run ./Server.py
