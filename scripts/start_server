@@ -1,3 +1,4 @@
 #!/bin/bash
 cd /home/ec2-user/app/
-sudo fastapi run ./Server.py
+source environment/bin/activate
+supervisord -c supervisord.conf
