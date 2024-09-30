@@ -5,3 +5,4 @@ pip3 install -r requirements.txt
 sudo supervisord -c supervisord.conf
 # nohup fastapi run ./Server.py
 # uvicorn Server:app --host 0.0.0.0 --port 80
+nohup uvicorn Server:app --host 0.0.0.0:3002
