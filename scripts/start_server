@@ -3,4 +3,4 @@ cd /home/ec2-user/app/
 source environment/bin/activate
 # supervisord -c supervisord.conf
 pip3 install -r requirements.txt
-fastapi run ./Server.py
+nohup fastapi run ./Server.py
