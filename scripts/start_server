@@ -1,8 +1,48 @@
 #!/bin/bash
+
+# Habilitar el modo de salida en caso de error
+set -e
+
+# Función para registrar mensajes
+log() {
+    echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1" | tee -a /var/log/app_deploy.log
+}
+
+# Cambiar al directorio de la aplicación
+log "Cambiando al directorio de la aplicación"
 cd /home/ec2-user/app/
+
+# Activar el entorno virtual
+log "Activando el entorno virtual"
 source environment/bin/activate
-pip3 install -r requirements.txt
-# sudo supervisord -c supervisord.conf
-# nohup fastapi run ./Server.py
-# uvicorn Server:app --host 0.0.0.0 --port 80
-nohup uvicorn Server:app --host 0.0.0.0:3002
+
+# Verificar la versión de Python
+log "Versión de Python:"
+python --version
+
+# Actualizar pip
+log "Actualizando pip"
+pip install --upgrade pip
+
+# Instalar dependencias
+log "Instalando dependencias"
+pip install -r requirements.txt
+
+# Listar paquetes instalados
+log "Paquetes instalados:"
+pip list
+
+# Iniciar la aplicación
+log "Iniciando la aplicación"
+nohup uvicorn Server:app --host 0.0.0.0 --port 3002 > /var/log/app.log 2>&1 &
+
+# Verificar si la aplicación se inició correctamente
+sleep 5
+if pgrep -f "uvicorn Server:app" > /dev/null
+then
+    log "La aplicación se inició correctamente"
+    exit 0
+else
+    log "Error: La aplicación no se pudo iniciar"
+    exit 1
+fi
