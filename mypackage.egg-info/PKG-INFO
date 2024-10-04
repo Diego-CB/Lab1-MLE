@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: mypackage
+Version: 0.1
+Home-page: https://github.com/Diego-CB/Lab1-MLE
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: joblib
+Requires-Dist: fastapi
+Requires-Dist: pydantic
